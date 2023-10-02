@@ -1,2 +1,39 @@
-# csharp-interview
-completed a task for a c# interview
+The code is written in C# and uses .NET Core, which is a cross-platform framework that can run on Windows, Linux, and macOS.This makes the application portable and versatile.
+I used Visual Studio to develop this code, although was not able to get the .dll to work as the namespace was bugged. Instead, I decompiled the .dll with "Jetbrains dotPeek" and created a class named AisUriProvider from it to continue my work. 
+
+The code is organized into separate classes each with a specific responsibility, adhering to the Single Responsibility Principle (SRP) of SOLID principles.The AisUriProvider class is responsible for providing URIs, the FileHandler class is responsible for handling file operations, and the Program class is the entry point of the application.
+
+The code uses the HttpClient class for downloading files, which is a modern, fast, and efficient way to make HTTP requests in .NET.
+
+The code uses a SemaphoreSlim to limit the number of parallel downloads to 3 at a time.This is a good way to control the level of parallelism and prevent overloading the system with too many simultaneous downloads.
+
+The code uses NUnit for unit testing, which is a popular and powerful testing framework in .NET.
+
+Assumptions:
+
+The AisUriProvider class always returns 10 URIs.If it returns less than 10 URIs, the code might not behave as expected.
+
+The URIs returned by the AisUriProvider class are valid and reachable.If any of the URIs are invalid or unreachable, the download will fail.
+
+The local file system has enough space to store the downloaded files.If the file system runs out of space, the download and save operations will fail.
+
+Decisions:
+
+Decided to use a Timer to refresh the files every 5 minutes(code is set to 1 for rapid prototyping purposes.This is a simple and effective way to perform periodic tasks in .NET.
+
+Decided to store the last 10 downloaded file names in a local text file.This is a simple and efficient way to persist data across runs of the application.
+
+Decided to write unit tests for the key methods in the AisUriProvider and FileHandler classes.This helps ensure the correctness of the code and makes it easier to maintain and refactor in the future.
+
+Decided to handle errors gracefully by catching exceptions, displaying an error message to the user, and allowing the application to continue running.This improves the user experience and makes the application more robust.
+
+Further Comments:
+
+I spent about 6 hours on this task. As I have not written a single line of C# code before, I started by consulting a blog post to get up to speed with the syntax. I have also used Github Copilot/GPT4 from inside Visual Studio Code and stackoverflow/habr extensively when I ran into issues. I have compiled and debugged the program, learned how to use NuGet and other basic Visual Studio 2022 functionality.
+
+To reproduce the code, create a Console Program in Visual Studio and paste in the project files from github and install dependencies, or download the wetransfer full folder and run interview/bin/Debug/net6.0/interview.exe or build from source
+
+You can test the program by using the unit tests or manually deleting the files or files.txt
+
+Here is a link to the full project files: https://we.tl/t-uvA3oLHNq4
+Github Repository:  https://github.com/TheAvet/csharp-interview
